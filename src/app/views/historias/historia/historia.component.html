@@ -1,0 +1,61 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Formulario de Autores</strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm>
+              <div class="mb-3">
+                <label cLabel for="nombre">Nombre</label>
+                <input cFormControl
+                       id="nombre"
+                       placeholder ="ingrese nombre"
+                       [(ngModel)] = "autorModelo.nombre"
+                       type="text"
+                       name="nombre"
+                />
+              </div>
+              <div class="mb-3">
+                <label cLabel for="apellido">Apellido</label>
+                <input cFormControl
+                       id="apellido"
+                       placeholder="ingrese apellido"
+                       type="text"
+                       name="apellido"
+                       [(ngModel)] = "autorModelo.apellido"
+                />
+              </div>              
+             
+              <button (click)="guardarAutor()" cButton class="me-1" color="primary" type="submit">
+                Guardar
+              </button>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="12">
+      <table cTable>
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">apellido<th>
+          <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for ( autor of listaAutores; track autor; ){
+            <tr>
+              <th scope="row">1</th>
+              <td>{{autor.nombre}}</td>
+              <td>{{autor.apellido}}</td>
+              <td>
+                <button cButton color="warning" variant="outline" (click)="verAutor(autor)">Editar</button>
+                <button (click)="eliminarAutor(autor)" cButton color="danger" variant="outline">Eliminar</button></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </c-col>
+  </c-row>
